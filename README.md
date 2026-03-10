@@ -1,4 +1,4 @@
-# SyncCode - Real-Time Collaborative Code Editor
+# codeshare 2.0 - Real-Time Collaborative Code Editor
 
 A real-time collaborative code-sharing web application built with Next.js, Tailwind CSS, Monaco Editor, Express, and Socket.io.
 
