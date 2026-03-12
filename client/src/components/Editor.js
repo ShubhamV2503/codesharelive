@@ -503,7 +503,7 @@ export default function CodeEditor({ roomId }) {
                     </div>
                     <div>
                         <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-purple-400 dark:to-pink-400">
-                            codeshare 2.0
+                            codesharelive
                         </h2>
                     </div>
                 </Link>

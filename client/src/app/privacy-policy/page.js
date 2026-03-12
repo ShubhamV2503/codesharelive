@@ -41,7 +41,7 @@ export default function PrivacyPolicy() {
                         <div className="prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-400 space-y-12">
 
                             <p className="text-base sm:text-lg leading-relaxed mb-8">
-                                At codeshare 2.0, we prioritize the protection of your personal information. This Privacy Policy details the types of data we collect and how we utilize, safeguard, and disclose that data when you interact with our collaborative platform.
+                                At codesharelive, we prioritize the protection of your personal information. This Privacy Policy details the types of data we collect and how we utilize, safeguard, and disclose that data when you interact with our collaborative platform.
                             </p>
 
                             <section id="data-collection" className="scroll-mt-32">
@@ -74,7 +74,7 @@ export default function PrivacyPolicy() {
                             <section id="third-party" className="scroll-mt-32">
                                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">4. Third-Party Integrations</h2>
                                 <p className="leading-relaxed">
-                                    codeshare 2.0 heavily relies on trusted, industry-leading third-party services—such as cloud hosting infrastructure and real-time database providers—to power the application. While we transmit application state data to these providers solely for the purpose of executing the service, these entities are governed by their own stringent, independent privacy policies and data protection standards.
+                                    codesharelive heavily relies on trusted, industry-leading third-party services—such as cloud hosting infrastructure and real-time database providers—to power the application. While we transmit application state data to these providers solely for the purpose of executing the service, these entities are governed by their own stringent, independent privacy policies and data protection standards.
                                 </p>
                             </section>
 

@@ -39,7 +39,7 @@ export default function Header() {
             <div className="container mx-auto px-4 h-16 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-3 group">
                     <CustomLogo className="h-8 w-8 text-black dark:text-white group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-transform hover:scale-105" />
-                    <span className="font-bold text-lg text-black dark:text-white">codeshare 2.0</span>
+                    <span className="font-bold text-lg text-black dark:text-white">codesharelive</span>
                 </Link>
                 <div className="flex items-center gap-6">
                     {mounted && (

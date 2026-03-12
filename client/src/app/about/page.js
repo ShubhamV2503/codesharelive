@@ -57,7 +57,7 @@ export default function About() {
                     </h1>
 
                     <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed">
-                        codeshare 2.0 is the next generation of pair programming. Eliminate friction, drop complex environment setups, and jump straight into coding together.
+                        codesharelive is the next generation of pair programming. Eliminate friction, drop complex environment setups, and jump straight into coding together.
                     </p>
 
                     <Link href="/" className="group relative inline-flex items-center justify-center px-8 py-4 mt-8 font-bold text-white transition-all duration-300 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:scale-105 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-[#030712]">

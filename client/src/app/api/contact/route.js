@@ -25,10 +25,10 @@ export async function POST(req) {
             from: email,
             to: process.env.EMAIL_USER, // Send to the same authenticated email
             replyTo: email, // Allow replying directly to the sender
-            subject: `codeshare 2.0 Contact: ${subject}`,
+            subject: `codesharelive Contact: ${subject}`,
             text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
             html: `
-                <h3>New Contact Message from codeshare 2.0</h3>
+                <h3>New Contact Message from codesharelive</h3>
                 <p><strong>Name:</strong> ${name}</p>
                 <p><strong>Email:</strong> ${email}</p>
                 <p><strong>Subject:</strong> ${subject}</p>

@@ -1,6 +1,6 @@
 export const metadata = {
     title: "Privacy Policy",
-    description: "Learn how we handle, process, and protect your data on codeshare 2.0.",
+    description: "Learn how we handle, process, and protect your data on codesharelive.",
 };
 
 export default function PrivacyLayout({ children }) {
