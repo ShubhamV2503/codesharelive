@@ -43,7 +43,7 @@ export default function JoinForm() {
 
             <div className="relative flex items-center py-6">
                 <div className="flex-grow border-t border-gray-300 dark:border-gray-700"></div>
-                <span className="flex-shrink-0 mx-4 text-gray-500 dark:text-gray-400 text-sm bg-gray-50 dark:bg-[#030712] px-2">or join existing</span>
+                <span className="flex-shrink-0 mx-4 text-gray-600 dark:text-gray-300 text-sm bg-gray-50 dark:bg-[#030712] px-2">or join existing</span>
                 <div className="flex-grow border-t border-gray-300 dark:border-gray-700"></div>
             </div>
 
