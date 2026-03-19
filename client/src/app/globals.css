@@ -3,20 +3,40 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
+  height: 10px;
 }
 
+/* Transparent track so it doesn't look like a solid block */
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #0d1117;
+  background: transparent;
 }
 
+/* Sleek floating pill design for light mode */
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #1f2937;
-  border-radius: 4px;
+  background: rgba(156, 163, 175, 0.5); /* gray-400 with opacity */
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #374151;
+  background: rgba(156, 163, 175, 0.8);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Sleek floating pill design for dark mode */
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.6); /* gray-600 with opacity */
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(75, 85, 99, 0.9);
+  border: 3px solid transparent;
+  background-clip: padding-box;
 }
 
 /* 

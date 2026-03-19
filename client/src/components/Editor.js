@@ -203,12 +203,18 @@ export default function CodeEditor({ roomId }) {
         }
     };
 
+    const getCoordinates = (e) => {
+        const rect = canvasRef.current.getBoundingClientRect();
+        // Support both mouse and touch events
+        const clientX = e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches && e.touches.length > 0 ? e.touches[0].clientY : e.clientY;
+        return { x: clientX - rect.left, y: clientY - rect.top };
+    };
+
     const handleCanvasMouseDown = (e) => {
         if (!isDrawingMode) return;
         isDrawing.current = true;
-        const rect = canvasRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+        const { x, y } = getCoordinates(e);
         currentStroke.current = {
             color: getLocalUserColor(),
             points: [{ x, y }]
@@ -217,9 +223,7 @@ export default function CodeEditor({ roomId }) {
 
     const handleCanvasMouseMove = (e) => {
         if (!isDrawingMode || !isDrawing.current || !currentStroke.current) return;
-        const rect = canvasRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+        const { x, y } = getCoordinates(e);
         currentStroke.current.points.push({ x, y });
 
         // Render just this stroke segment locally
@@ -496,7 +500,7 @@ export default function CodeEditor({ roomId }) {
                 `).join('\n')
             }} />
 
-            <div className="flex justify-between items-center p-4 bg-gray-50 dark:bg-[#0a0a0a] border-b border-gray-200 dark:border-[#1f2937] shadow-sm dark:shadow-lg">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center p-4 gap-4 bg-gray-50 dark:bg-[#0a0a0a] border-b border-gray-200 dark:border-[#1f2937] shadow-sm dark:shadow-lg">
                 <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity group">
                     <div className="p-2 bg-blue-100 dark:bg-blue-600/10 rounded-lg group-hover:scale-105 transition-transform">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-600 dark:text-blue-500"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
@@ -508,7 +512,7 @@ export default function CodeEditor({ roomId }) {
                     </div>
                 </Link>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 md:gap-4 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 hide-scrollbar whitespace-nowrap shrink-0 custom-scrollbar">
                     <div className="flex items-center gap-3 mr-4 border-r border-gray-300 dark:border-[#1f2937] pr-6">
                         <div className="px-3 py-1 bg-gray-200 dark:bg-[#1f2937] rounded-md text-sm font-mono text-gray-700 dark:text-gray-300 flex items-center gap-2">
                             <span>Room: {roomId.substring(0, 8)}</span>
@@ -675,6 +679,10 @@ export default function CodeEditor({ roomId }) {
                         onMouseMove={handleCanvasMouseMove}
                         onMouseUp={handleCanvasMouseUp}
                         onMouseLeave={handleCanvasMouseUp}
+                        onTouchStart={handleCanvasMouseDown}
+                        onTouchMove={handleCanvasMouseMove}
+                        onTouchEnd={handleCanvasMouseUp}
+                        onTouchCancel={handleCanvasMouseUp}
                         className="absolute top-0 left-0 w-full h-full z-10 touch-none"
                         style={{ pointerEvents: isDrawingMode ? 'auto' : 'none' }}
                     />
@@ -682,7 +690,7 @@ export default function CodeEditor({ roomId }) {
 
                 {/* --- Output Panel --- */}
                 {isOutputOpen && (
-                    <div className="h-64 border-t border-gray-300 dark:border-[#1f2937] bg-[#fdfdfd] dark:bg-[#0d1117] flex flex-col shrink-0 transition-all duration-300 ease-in-out">
+                    <div className="h-48 md:h-64 border-t border-gray-300 dark:border-[#1f2937] bg-[#fdfdfd] dark:bg-[#0d1117] flex flex-col shrink-0 transition-all duration-300 ease-in-out">
                         <div className="flex justify-between items-center px-4 py-2 border-b border-gray-200 dark:border-[#1f2937] bg-gray-50 dark:bg-[#0a0a0f]">
                             <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
                                 <Terminal size={16} />
