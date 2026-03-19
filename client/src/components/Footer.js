@@ -11,17 +11,17 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                     <div className="space-y-6">
                         <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">codesharelive</h2>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed max-w-xs">
+                        <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed max-w-xs">
                             The fastest way to collaborate, pair program, and debug with developers anywhere.
                         </p>
                         <div className="flex gap-4">
-                            <a href="https://github.com/ShubhamV2503" aria-label="GitHub" target="_blank" rel="noopener noreferrer" className="rounded-full p-2.5 bg-gray-200 dark:bg-[#111827] text-gray-600 dark:text-gray-400 hover:text-white hover:bg-gray-900 dark:hover:bg-[#1f2937] hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                            <a href="https://github.com/ShubhamV2503" aria-label="GitHub" target="_blank" rel="noopener noreferrer" className="rounded-full p-2.5 bg-gray-200 dark:bg-[#111827] text-gray-700 dark:text-gray-300 hover:text-white hover:bg-gray-900 dark:hover:bg-[#1f2937] hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                                 <Github size={20} />
                             </a>
-                            <a href="https://www.linkedin.com/in/shubhamv2503/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="rounded-full p-2.5 bg-gray-200 dark:bg-[#111827] text-gray-600 dark:text-gray-400 hover:text-white hover:bg-[#0077b5] dark:hover:bg-[#1f2937] hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                            <a href="https://www.linkedin.com/in/shubhamv2503/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="rounded-full p-2.5 bg-gray-200 dark:bg-[#111827] text-gray-700 dark:text-gray-300 hover:text-white hover:bg-[#0077b5] dark:hover:bg-[#1f2937] hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                                 <Linkedin size={20} />
                             </a>
-                            <Link href="/contact" aria-label="Contact via Email" className="rounded-full p-2.5 bg-gray-200 dark:bg-[#111827] text-gray-600 dark:text-gray-400 hover:text-white hover:bg-pink-600 dark:hover:bg-[#1f2937] hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                            <Link href="/contact" aria-label="Contact via Email" className="rounded-full p-2.5 bg-gray-200 dark:bg-[#111827] text-gray-700 dark:text-gray-300 hover:text-white hover:bg-pink-600 dark:hover:bg-[#1f2937] hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                                 <Mail size={20} />
                             </Link>
                         </div>
@@ -29,7 +29,7 @@ export default function Footer() {
 
                     <div>
                         <h3 className="font-semibold text-gray-900 dark:text-white mb-6">Resources</h3>
-                        <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                        <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
                             <li><Link href="/about" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">About codesharelive</Link></li>
                             <li><Link href="/contact" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">Contact Us</Link></li>
                         </ul>
@@ -37,14 +37,14 @@ export default function Footer() {
 
                     <div>
                         <h3 className="font-semibold text-gray-900 dark:text-white mb-6">Support</h3>
-                        <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                        <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
                             <li><Link href="/faq" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">FAQ / Help Center</Link></li>
                             <li><Link href="/terms" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">Terms of Service</Link></li>
                             <li><Link href="/privacy-policy" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">Privacy Policy</Link></li>
                         </ul>
                     </div>
                 </div>
-                <div className="pt-8 border-t border-gray-200 dark:border-[#1f2937] flex justify-center items-center text-sm text-gray-500">
+                <div className="pt-8 border-t border-gray-200 dark:border-[#1f2937] flex justify-center items-center text-sm text-gray-600 dark:text-gray-400">
                     <p>© {new Date().getFullYear()} codesharelive. All rights reserved.</p>
                 </div>
             </div>
