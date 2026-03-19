@@ -70,8 +70,8 @@ export default function MockEditor() {
                                     className="absolute top-0 left-4 bottom-0 flex flex-col pointer-events-none z-20"
                                 >
                                     <div className="relative h-full flex items-center">
-                                        <div className="h-5 w-[2px] bg-pink-500 animate-pulse"></div>
-                                        <div className="absolute top-[-22px] left-[-6px] bg-pink-500 text-white text-[10px] px-2 py-0.5 rounded shadow-sm whitespace-nowrap font-sans font-medium hidden sm:block">
+                                        <div className="h-5 w-[2px] bg-pink-600 dark:bg-pink-500 animate-pulse"></div>
+                                        <div className="absolute top-[-22px] left-[-6px] bg-pink-700 dark:bg-pink-600 text-white text-[10px] px-2 py-0.5 rounded shadow-sm whitespace-nowrap font-sans font-medium hidden sm:block">
                                             Sarah
                                         </div>
                                     </div>
