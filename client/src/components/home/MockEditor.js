@@ -1,20 +1,10 @@
 "use client";
 
-import { motion } from 'framer-motion';
 import { Code2 } from 'lucide-react';
 
 export default function MockEditor() {
-    const itemVariants = {
-        hidden: { y: 30, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: { type: "spring", stiffness: 80, damping: 15 }
-        }
-    };
-
     return (
-        <motion.div variants={itemVariants} initial="hidden" animate="visible" className="w-full lg:w-[50%] mt-12 lg:mt-0 perspective-[2000px]">
+        <div className="w-full lg:w-[50%] mt-12 lg:mt-0 perspective-[2000px] animate-fade-in-up" style={{ animationDelay: '300ms' }}>
             <div className="relative w-full aspect-[4/3] max-w-xl mx-auto animate-float-3d">
                 {/* Huge glow behind the window */}
                 <div className="absolute -inset-4 bg-gradient-to-tr from-blue-500/30 via-purple-500/30 to-pink-500/30 rounded-[30px] blur-3xl opacity-50 dark:opacity-80"></div>
@@ -64,31 +54,22 @@ export default function MockEditor() {
                             {/* Animated typing row */}
                             <div className="relative pl-4 h-6 mb-2">
                                 {/* Remote cursor and tag */}
-                                <motion.div
-                                    animate={{ x: [0, 40, 150, 220, 220, 0] }}
-                                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                                    className="absolute top-0 left-4 bottom-0 flex flex-col pointer-events-none z-20"
-                                >
+                                <div className="absolute top-0 left-4 bottom-0 flex flex-col pointer-events-none z-20 animate-cursor-x">
                                     <div className="relative h-full flex items-center">
                                         <div className="h-5 w-[2px] bg-pink-600 dark:bg-pink-500 animate-pulse"></div>
                                         <div className="absolute top-[-22px] left-[-6px] bg-pink-700 dark:bg-pink-600 text-white text-[10px] px-2 py-0.5 rounded shadow-sm whitespace-nowrap font-sans font-medium hidden sm:block">
                                             Sarah
                                         </div>
                                     </div>
-                                </motion.div>
+                                </div>
 
                                 {/* Animated Text */}
-                                <motion.div
-                                    initial={{ width: "0%" }}
-                                    animate={{ width: "220px" }}
-                                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                                    className="overflow-hidden whitespace-nowrap text-gray-800 dark:text-gray-300 h-full flex items-center"
-                                >
+                                <div className="overflow-hidden whitespace-nowrap text-gray-800 dark:text-gray-300 h-full flex items-center animate-typing-reveal">
                                     <span className="text-gray-800 dark:text-gray-300">
                                         <span className="text-purple-600 dark:text-purple-400 mr-2">await</span>
                                         <span className="text-blue-600 dark:text-blue-400">syncData</span>();
                                     </span>
-                                </motion.div>
+                                </div>
                             </div>
 
                             <div className="text-gray-800 dark:text-gray-300 pl-4 mb-2 mt-4">
@@ -113,6 +94,6 @@ export default function MockEditor() {
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 }

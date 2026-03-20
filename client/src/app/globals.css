@@ -95,3 +95,28 @@
   opacity: 0;
   animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Zero-JS MockEditor Typing Animations */
+@keyframes typing-reveal {
+  0%, 20% { clip-path: inset(0 100% 0 0); }
+  40%, 80% { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(0 100% 0 0); }
+}
+
+@keyframes cursor-x {
+  0%, 20% { transform: translateX(0px); }
+  25% { transform: translateX(40px); }
+  32% { transform: translateX(150px); }
+  40%, 80% { transform: translateX(220px); }
+  100% { transform: translateX(0px); }
+}
+
+.animate-typing-reveal {
+  animation: typing-reveal 8s ease-in-out infinite;
+  /* Ensure it has a baseline width so clip-path works nicely */
+  width: 220px;
+}
+
+.animate-cursor-x {
+  animation: cursor-x 8s ease-in-out infinite;
+}
