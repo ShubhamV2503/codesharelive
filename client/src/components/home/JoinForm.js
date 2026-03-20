@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
 import { Code2, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export default function JoinForm() {
     const router = useRouter();
@@ -22,17 +21,8 @@ export default function JoinForm() {
         }
     };
 
-    const itemVariants = {
-        hidden: { y: 30, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: { type: "spring", stiffness: 80, damping: 15 }
-        }
-    };
-
     return (
-        <motion.div variants={itemVariants} initial="hidden" animate="visible" className="z-10 w-full max-w-md relative mx-auto lg:mx-0">
+        <div className="z-10 w-full max-w-md relative mx-auto lg:mx-0 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
             <button
                 onClick={createRoom}
                 className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-gray-900 border border-transparent dark:bg-white text-white dark:text-gray-900 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 dark:hover:from-purple-500 dark:hover:to-pink-500 hover:text-white hover:border-transparent rounded-full text-lg font-medium transition-all duration-300 shadow-[0_4px_14px_0_rgba(0,0,0,0.39)] dark:shadow-[0_4px_14px_0_rgba(255,255,255,0.39)] hover:shadow-[0_0_30px_rgba(236,72,153,0.5)] dark:hover:shadow-[0_0_30px_rgba(236,72,153,0.5)] hover:-translate-y-0.5 group"
@@ -66,6 +56,6 @@ export default function JoinForm() {
                     <ArrowRight size={18} className="text-gray-400 dark:text-gray-500 group-hover:text-gray-900 dark:group-hover:text-white group-hover:translate-x-1 transition-all" />
                 </button>
             </form>
-        </motion.div>
+        </div>
     );
 }

@@ -1,7 +1,9 @@
-import HeroBackground from '../components/home/HeroBackground';
+import dynamic from 'next/dynamic';
 import JoinForm from '../components/home/JoinForm';
-import MockEditor from '../components/home/MockEditor';
 import AnimatedContainer, { AnimatedItem } from '../components/home/AnimatedContainer';
+
+const HeroBackground = dynamic(() => import('../components/home/HeroBackground'));
+const MockEditor = dynamic(() => import('../components/home/MockEditor'));
 
 export default function Home() {
     return (
