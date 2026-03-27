@@ -10,7 +10,7 @@ export default function JoinForm() {
     const [joinId, setJoinId] = useState('');
 
     const createRoom = () => {
-        const roomId = uuidv4();
+        const roomId = uuidv4().substring(0, 8);
         router.push(`/${roomId}`);
     };
 
