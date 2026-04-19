@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Editor from '@monaco-editor/react';
 import { io } from 'socket.io-client';
 import Link from 'next/link';
-import { Copy, Download, Users, Check, ChevronDown, Timer, Play, Pause, RotateCcw, Pencil, Trash2, PlayCircle, Terminal, X } from 'lucide-react';
+import { Copy, Download, Users, Check, ChevronDown, Pencil, Trash2, PlayCircle, Terminal, X } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 import {
@@ -109,10 +109,7 @@ export default function CodeEditor({ roomId }) {
     const [copiedId, setCopiedId] = useState(false);
     const [copiedLink, setCopiedLink] = useState(false);
 
-    // Timer states
-    const [timer, setTimer] = useState({ duration: 300, remaining: 300, isRunning: false }); // Default 5 mins
-    const [timerInput, setTimerInput] = useState('5');
-    const [isEditingTimer, setIsEditingTimer] = useState(false);
+
 
     // Drawing states
     const [isDrawingMode, setIsDrawingMode] = useState(false);
@@ -331,19 +328,7 @@ export default function CodeEditor({ roomId }) {
             renderAllCursors();
         });
 
-        // Timer Events
-        socketRef.current.on('timer-sync', (timerState) => {
-            setTimer(timerState);
-        });
 
-        socketRef.current.on('timer-tick', (timerState) => {
-            setTimer(timerState);
-        });
-
-        socketRef.current.on('timer-end', (timerState) => {
-            setTimer(timerState);
-            // Optional: Play a sound or show browser notification here
-        });
 
         // Drawing Events
         socketRef.current.on('drawing-sync', (syncedLines) => {
@@ -388,25 +373,7 @@ export default function CodeEditor({ roomId }) {
 
 
 
-    // --- Timer Controls ---
-    const startTimer = () => socketRef.current?.emit('start-timer', roomId);
-    const pauseTimer = () => socketRef.current?.emit('pause-timer', roomId);
-    const resetTimer = () => socketRef.current?.emit('reset-timer', roomId);
 
-    const applyTimer = () => {
-        const mins = parseInt(timerInput, 10);
-        if (!isNaN(mins) && mins > 0) {
-            socketRef.current?.emit('set-timer', { roomId, duration: mins * 60 });
-        }
-        setIsEditingTimer(false);
-    };
-
-    const formatTime = (seconds) => {
-        const m = Math.floor(seconds / 60);
-        const s = seconds % 60;
-        return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-    };
-    // -----------------------
 
     const handleEditorChange = (value) => {
         if (isLocalChange.current) {
@@ -500,22 +467,23 @@ export default function CodeEditor({ roomId }) {
                 `).join('\n')
             }} />
 
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center p-4 gap-4 bg-gray-50 dark:bg-[#0a0a0a] border-b border-gray-200 dark:border-[#1f2937] shadow-sm dark:shadow-lg">
-                <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity group">
-                    <div className="p-2 bg-blue-100 dark:bg-blue-600/10 rounded-lg group-hover:scale-105 transition-transform">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-600 dark:text-blue-500"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                    </div>
-                    <div>
-                        <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-purple-400 dark:to-pink-400">
+            <div className="flex flex-col bg-gray-50 dark:bg-[#0a0a0a] border-b border-gray-200 dark:border-[#1f2937] shadow-sm dark:shadow-lg">
+                {/* Row 1: Logo + Room info */}
+                <div className="flex items-center justify-between px-3 py-2 md:px-4">
+                    <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity group shrink-0">
+                        <div className="p-1.5 bg-blue-100 dark:bg-blue-600/10 rounded-lg group-hover:scale-105 transition-transform">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-600 dark:text-blue-500"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        </div>
+                        <h2 className="text-base md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-purple-400 dark:to-pink-400">
                             codesharelive
                         </h2>
-                    </div>
-                </Link>
+                    </Link>
 
-                <div className="flex items-center gap-2 md:gap-4 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 hide-scrollbar whitespace-nowrap shrink-0 custom-scrollbar">
-                    <div className="flex items-center gap-3 mr-4 border-r border-gray-300 dark:border-[#1f2937] pr-6">
-                        <div className="px-3 py-1 bg-gray-200 dark:bg-[#1f2937] rounded-md text-sm font-mono text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                            <span>Room: {roomId.substring(0, 8)}</span>
+                    {/* Room info — always visible on the right */}
+                    <div className="flex items-center gap-2 shrink-0">
+                        <div className="px-2 py-1 bg-gray-200 dark:bg-[#1f2937] rounded-md text-xs font-mono text-gray-700 dark:text-gray-300 flex items-center gap-1.5">
+                            <span className="hidden sm:inline">Room:</span>
+                            <span>{roomId.substring(0, 8)}</span>
                             <button
                                 onClick={() => {
                                     navigator.clipboard.writeText(roomId);
@@ -525,68 +493,23 @@ export default function CodeEditor({ roomId }) {
                                 className={`${copiedId ? 'text-emerald-500 dark:text-emerald-400' : 'text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'} transition-colors cursor-pointer`}
                                 title="Copy Room ID"
                             >
-                                {copiedId ? <Check size={14} /> : <Copy size={14} />}
+                                {copiedId ? <Check size={12} /> : <Copy size={12} />}
                             </button>
                         </div>
-                        <div className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded-md text-sm font-medium flex items-center gap-2 pointer-events-none">
-                            <Users size={16} /> {Math.max(1, users.length)} Online
+                        <div className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded-md text-xs font-medium flex items-center gap-1.5 pointer-events-none">
+                            <Users size={13} /> <span className="hidden sm:inline">{Math.max(1, users.length)} Online</span><span className="sm:hidden">{Math.max(1, users.length)}</span>
                         </div>
                     </div>
+                </div>
 
-                    {/* --- Timer UI --- */}
-                    <div className="flex items-center gap-2 px-3 py-1 bg-gray-100 dark:bg-[#1f2937] rounded-md border border-gray-200 dark:border-gray-700">
-                        <Timer size={16} className={`${timer.remaining <= 60 && timer.isRunning ? 'text-red-500 animate-pulse' : 'text-gray-500 dark:text-gray-400'}`} />
-
-                        {isEditingTimer ? (
-                            <div className="flex items-center gap-1">
-                                <input
-                                    type="number"
-                                    min="1"
-                                    max="120"
-                                    value={timerInput}
-                                    onChange={(e) => setTimerInput(e.target.value)}
-                                    onKeyDown={(e) => e.key === 'Enter' && applyTimer()}
-                                    className="w-12 px-1 text-sm bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-600 rounded text-center outline-none focus:border-blue-500"
-                                    autoFocus
-                                />
-                                <span className="text-xs text-gray-500">min</span>
-                                <button onClick={applyTimer} className="ml-1 text-green-600 dark:text-green-400 hover:text-green-700">
-                                    <Check size={14} />
-                                </button>
-                            </div>
-                        ) : (
-                            <span
-                                className={`text-sm font-mono font-bold cursor-pointer hover:opacity-80 transition-opacity ${timer.remaining <= 60 && timer.isRunning ? 'text-red-500' : 'text-gray-700 dark:text-gray-200'}`}
-                                onClick={() => !timer.isRunning && setIsEditingTimer(true)}
-                                title={timer.isRunning ? "Pause to edit" : "Click to set minutes"}
-                            >
-                                {formatTime(timer.remaining)}
-                            </span>
-                        )}
-
-                        <div className="flex items-center gap-1 ml-2 border-l border-gray-300 dark:border-gray-600 pl-2">
-                            {timer.isRunning ? (
-                                <button onClick={pauseTimer} className="text-gray-500 hover:text-orange-500 transition-colors" title="Pause">
-                                    <Pause size={14} />
-                                </button>
-                            ) : (
-                                <button onClick={startTimer} className="text-gray-500 hover:text-green-500 transition-colors" title="Start">
-                                    <Play size={14} />
-                                </button>
-                            )}
-                            <button onClick={resetTimer} className="text-gray-500 hover:text-blue-500 transition-colors" title="Reset">
-                                <RotateCcw size={14} />
-                            </button>
-                        </div>
-                    </div>
-                    {/* ---------------- */}
-
+                {/* Row 2: Controls — horizontally scrollable on mobile */}
+                <div className="flex items-center gap-1.5 md:gap-2 px-3 pb-2 md:px-4 overflow-x-auto custom-scrollbar">
                     <LanguageSelector language={language} setLanguage={setLanguage} />
 
                     <button
                         onClick={executeCode}
                         disabled={isRunningCode || language === 'html' || language === 'css' || language === 'json' || language === 'plaintext'}
-                        className={`flex items-center gap-2 px-4 py-1.5 rounded-md text-sm font-medium transition-all ${isRunningCode || language === 'html' || language === 'css' || language === 'json' || language === 'plaintext'
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-all shrink-0 ${isRunningCode || language === 'html' || language === 'css' || language === 'json' || language === 'plaintext'
                             ? 'bg-gray-200 dark:bg-[#1f2937] text-gray-400 cursor-not-allowed border border-transparent'
                             : 'bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-400 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-200 dark:hover:bg-emerald-900/50'
                             }`}
@@ -595,27 +518,27 @@ export default function CodeEditor({ roomId }) {
                         {isRunningCode ? (
                             <div className="w-4 h-4 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
                         ) : (
-                            <PlayCircle size={16} />
+                            <PlayCircle size={15} />
                         )}
-                        Run Code
+                        <span>Run</span>
                     </button>
 
                     <button
                         onClick={downloadCode}
-                        className="flex items-center gap-2 px-3 py-1.5 rounded-md text-sm border border-gray-300 dark:border-[#1f2937] hover:bg-gray-100 dark:hover:bg-[#1f2937] transition-all text-gray-700 dark:text-gray-300"
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm border border-gray-300 dark:border-[#1f2937] hover:bg-gray-100 dark:hover:bg-[#1f2937] transition-all text-gray-700 dark:text-gray-300 shrink-0"
                         title="Download Code"
                     >
-                        <Download size={16} />
-                        Download
+                        <Download size={15} />
+                        <span className="hidden sm:inline">Download</span>
                     </button>
 
                     <button
                         onClick={() => setIsDrawingMode(!isDrawingMode)}
-                        className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm border transition-all ${isDrawingMode ? 'bg-blue-100 dark:bg-blue-900/30 border-blue-400 text-blue-700 dark:text-blue-400' : 'border-gray-300 dark:border-[#1f2937] hover:bg-gray-100 dark:hover:bg-[#1f2937] text-gray-700 dark:text-gray-300'}`}
-                        title="Toggle Multi-Cursor Draw Mode"
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm border transition-all shrink-0 ${isDrawingMode ? 'bg-blue-100 dark:bg-blue-900/30 border-blue-400 text-blue-700 dark:text-blue-400' : 'border-gray-300 dark:border-[#1f2937] hover:bg-gray-100 dark:hover:bg-[#1f2937] text-gray-700 dark:text-gray-300'}`}
+                        title="Toggle Draw Mode"
                     >
-                        <Pencil size={16} />
-                        Draw
+                        <Pencil size={15} />
+                        <span className="hidden sm:inline">Draw</span>
                     </button>
 
                     {isDrawingMode && (
@@ -625,30 +548,31 @@ export default function CodeEditor({ roomId }) {
                                 clearCanvas();
                                 socketRef.current?.emit('clear-canvas', roomId);
                             }}
-                            className="flex items-center gap-2 px-3 py-1.5 rounded-md text-sm border border-red-300 dark:border-red-900/50 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all text-red-600 dark:text-red-400"
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm border border-red-300 dark:border-red-900/50 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all text-red-600 dark:text-red-400 shrink-0"
                             title="Clear Canvas"
                         >
-                            <Trash2 size={16} />
-                            Clear
+                            <Trash2 size={15} />
+                            <span className="hidden sm:inline">Clear</span>
                         </button>
                     )}
 
-                    <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer border border-gray-300 dark:border-[#1f2937] px-3 py-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-[#1f2937] transition-all">
+                    <label className="flex items-center gap-1.5 text-sm text-gray-700 dark:text-gray-300 cursor-pointer border border-gray-300 dark:border-[#1f2937] px-3 py-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-[#1f2937] transition-all shrink-0">
                         <input
                             type="checkbox"
                             checked={readOnly}
                             onChange={(e) => setReadOnly(e.target.checked)}
                             className="accent-blue-600 dark:accent-blue-500 rounded bg-white dark:bg-[#1f2937] border-gray-300 dark:border-gray-600"
                         />
-                        Read Only
+                        <span className="hidden sm:inline">Read Only</span>
+                        <span className="sm:hidden">R/O</span>
                     </label>
 
                     <button
                         onClick={copyRoomLink}
-                        className="flex items-center gap-2 px-4 py-1.5 bg-gray-900 dark:bg-[#1f2937] hover:bg-gray-800 dark:hover:bg-gray-700 text-white rounded-md text-sm font-medium transition-all w-32 justify-center"
+                        className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-900 dark:bg-[#1f2937] hover:bg-gray-800 dark:hover:bg-gray-700 text-white rounded-md text-sm font-medium transition-all shrink-0 justify-center"
                     >
-                        {copiedLink ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
-                        {copiedLink ? 'Copied!' : 'Copy Link'}
+                        {copiedLink ? <Check size={15} className="text-emerald-400" /> : <Copy size={15} />}
+                        <span>{copiedLink ? 'Copied!' : 'Copy Link'}</span>
                     </button>
                 </div>
             </div>

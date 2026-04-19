@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+/* ─── Mobile: hide scrollbar but keep scroll ─── */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Safe-area support for notched phones ─── */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 .custom-scrollbar::-webkit-scrollbar {

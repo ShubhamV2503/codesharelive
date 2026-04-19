@@ -4,7 +4,7 @@ import { Code2 } from 'lucide-react';
 
 export default function MockEditor() {
     return (
-        <div className="w-full lg:w-[50%] mt-12 lg:mt-0 perspective-[2000px] animate-fade-in-up" style={{ animationDelay: '300ms' }}>
+        <div className="hidden md:flex w-full lg:w-[50%] mt-12 lg:mt-0 perspective-[2000px] animate-fade-in-up" style={{ animationDelay: '300ms' }}>
             <div className="relative w-full aspect-[4/3] max-w-xl mx-auto animate-float-3d">
                 {/* Huge glow behind the window */}
                 <div className="absolute -inset-4 bg-gradient-to-tr from-blue-500/30 via-purple-500/30 to-pink-500/30 rounded-[30px] blur-3xl opacity-50 dark:opacity-80"></div>

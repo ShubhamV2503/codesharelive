@@ -1,5 +1,15 @@
 import "./globals.css";
 
+export const viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    themeColor: [
+        { media: '(prefers-color-scheme: light)', color: '#f9fafb' },
+        { media: '(prefers-color-scheme: dark)', color: '#030712' },
+    ],
+};
+
 export const metadata = {
     title: {
         default: "CodeshareLive - Real-time Collaborative Code Editor",
@@ -26,6 +36,7 @@ export const metadata = {
         google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
     },
 };
+
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";

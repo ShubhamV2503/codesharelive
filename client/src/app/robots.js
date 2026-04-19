@@ -1,5 +1,5 @@
 export default function robots() {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://your-vercel-domain.vercel.app';
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://codesharelive.vercel.app';
 
     return {
         rules: {
