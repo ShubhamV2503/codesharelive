@@ -1,9 +1,15 @@
 import Link from 'next/link';
 import { Github, Linkedin, Mail } from 'lucide-react';
+import AdBanner from './AdBanner';
 
 export default function Footer() {
     return (
-        <footer className="w-full bg-gray-50 dark:bg-[#030712] relative mt-20 transition-colors duration-300">
+        <footer className="w-full bg-gray-50 dark:bg-[#030712] relative mt-10 transition-colors duration-300">
+            {/* Ad Banner Overlay */}
+            <div className="container mx-auto px-4 pt-4">
+                <AdBanner />
+            </div>
+
             {/* Top Gradient Border */}
             <div className="h-1 w-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" />
 
