@@ -30,11 +30,10 @@ export default function AdBanner() {
         <div className="flex justify-center w-full my-8 min-h-[90px] overflow-hidden">
             <div 
                 ref={bannerRef}
-                className="bg-gray-100/50 dark:bg-white/5 rounded-lg flex items-center justify-center text-xs text-gray-400 font-mono tracking-widest border border-dashed border-gray-300 dark:border-white/10"
+                className="rounded-lg flex items-center justify-center overflow-hidden"
                 style={{ width: '728px', height: '90px' }}
             >
                 {/* Adsterra script will inject the iframe here */}
-                ADVERTISEMENT
             </div>
         </div>
     );
