@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { Send, CheckCircle2 } from 'lucide-react';
+import { Send, CheckCircle2, Mail, Github, MessageCircle } from 'lucide-react';
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -154,6 +154,31 @@ export default function Contact() {
                                 </p>
                             )}
                         </form>
+                    </div>
+                </div>
+
+                {/* Additional Help Info */}
+                <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div className="space-y-3">
+                        <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center mx-auto">
+                            <Mail className="w-6 h-6 text-blue-500" />
+                        </div>
+                        <h3 className="font-bold">Email Support</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Directly reach out to us at support@codesharelive.vercel.app for complex queries.</p>
+                    </div>
+                    <div className="space-y-3">
+                        <div className="w-12 h-12 bg-purple-500/10 rounded-full flex items-center justify-center mx-auto">
+                            <Github className="w-6 h-6 text-purple-500" />
+                        </div>
+                        <h3 className="font-bold">Open Source</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Found a bug or have a feature request? Open an issue on our GitHub repository.</p>
+                    </div>
+                    <div className="space-y-3">
+                        <div className="w-12 h-12 bg-pink-500/10 rounded-full flex items-center justify-center mx-auto">
+                            <MessageCircle className="w-6 h-6 text-pink-500" />
+                        </div>
+                        <h3 className="font-bold">Community</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Join our community discussions to get tips from other developers using codesharelive.</p>
                     </div>
                 </div>
             </div>

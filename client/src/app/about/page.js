@@ -82,8 +82,45 @@ export default function About() {
                     ))}
                 </div>
 
+                {/* Mission Section */}
+                <div className={`mt-32 max-w-4xl mx-auto text-center space-y-8 transition-all duration-1000 delay-500 transform ${isMounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
+                    <h2 className="text-3xl md:text-5xl font-bold">Our Mission</h2>
+                    <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                        At codesharelive, we believe that collaboration shouldn't be complicated. Our mission is to provide developers, students, and interviewers with a seamless, high-performance environment where code can be shared and discussed in real-time. By removing the barriers of complex environment setups and latency issues, we enable creators to focus on what matters most: solving problems together.
+                    </p>
+                </div>
+
+                {/* Use Cases Section */}
+                <div className={`mt-32 space-y-12 transition-all duration-1000 delay-700 transform ${isMounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
+                    <div className="text-center">
+                        <h2 className="text-3xl md:text-5xl font-bold mb-4">Use Cases</h2>
+                        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Discover how developers around the world are using codesharelive to enhance their workflow.</p>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div className="p-8 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-gray-800">
+                            <h4 className="text-xl font-bold mb-4 text-blue-500">Pair Programming</h4>
+                            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                                Debug complex logic or build new features with a teammate in real-time. Share your cursor, highlight code, and iterate faster than ever before.
+                            </p>
+                        </div>
+                        <div className="p-8 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-gray-800">
+                            <h4 className="text-xl font-bold mb-4 text-purple-500">Technical Interviews</h4>
+                            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                                Conduct remote technical interviews in a clean, professional environment. Watch candidates solve problems live and provide instant feedback.
+                            </p>
+                        </div>
+                        <div className="p-8 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-gray-800">
+                            <h4 className="text-xl font-bold mb-4 text-pink-500">Education & Mentoring</h4>
+                            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                                Teach programming concepts to students or mentor junior developers by walking through code examples together in a shared session.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 {/* Technical Showcase */}
-                <div className={`mt-32 p-8 md:p-12 rounded-3xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 text-left transition-all duration-1000 delay-500 transform ${isMounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
+                <div className={`mt-32 p-8 md:p-12 rounded-3xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 text-left transition-all duration-1000 delay-900 transform ${isMounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
                     <div className="flex flex-col md:flex-row items-center justify-between gap-12">
                         <div className="flex-1 space-y-6">
                             <h2 className="text-3xl font-bold text-white">Built for modern standard syntax.</h2>
