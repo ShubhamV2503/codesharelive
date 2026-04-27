@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Zap, Users, Shield } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import JoinForm from '../components/home/JoinForm';
 import AnimatedContainer, { AnimatedItem } from '../components/home/AnimatedContainer';
@@ -58,36 +58,58 @@ export default function Home() {
                 <MockEditor />
             </AnimatedContainer>
 
-            {/* NEW SECTION: SEO Internal Links & Features */}
-            <section className="w-full py-24 bg-white dark:bg-[#050a18] border-t border-gray-100 dark:border-white/5 transition-colors duration-300">
-                <div className="max-w-7xl mx-auto px-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                        <div className="space-y-4">
-                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Why codesharelive?</h3>
-                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                                Our platform is built for speed and simplicity. Whether you are a student learning to code or a senior engineer pair-programming across continents, we provide the tools you need to succeed.
-                            </p>
-                            <Link href="/about" className="inline-flex items-center text-purple-600 dark:text-purple-400 font-medium hover:gap-2 transition-all">
-                                Learn more about our mission <ChevronRight size={18} />
-                            </Link>
+            {/* NEW SECTION: SEO Internal Links & Features - CARD BASED */}
+            <section className="w-full py-24 bg-white dark:bg-[#050a18] border-t border-gray-100 dark:border-white/5 transition-colors duration-300 relative overflow-hidden">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent pointer-events-none" />
+                
+                <div className="max-w-7xl mx-auto px-4 relative z-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {/* Card 1 */}
+                        <div className="group p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 hover:border-purple-500/50 dark:hover:border-purple-400/50 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 flex flex-col items-start gap-6">
+                            <div className="p-3 rounded-xl bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                                <Zap size={24} />
+                            </div>
+                            <div className="space-y-4">
+                                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Why codesharelive?</h3>
+                                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                    Built for speed and simplicity. Whether you are learning to code or a senior engineer pair-programming, we provide the tools you need.
+                                </p>
+                                <Link href="/about" className="inline-flex items-center text-purple-600 dark:text-purple-400 font-medium hover:gap-2 transition-all pt-2">
+                                    Learn more <ChevronRight size={18} />
+                                </Link>
+                            </div>
                         </div>
-                        <div className="space-y-4">
-                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Real-time Collaboration</h3>
-                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                                See every keystroke in real-time. Our ultra-low latency WebSocket engine ensures that your collaborative sessions are buttery smooth, even with multiple developers in the same room.
-                            </p>
-                            <Link href="/faq" className="inline-flex items-center text-pink-600 dark:text-pink-400 font-medium hover:gap-2 transition-all">
-                                View common questions <ChevronRight size={18} />
-                            </Link>
+
+                        {/* Card 2 */}
+                        <div className="group p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 hover:border-pink-500/50 dark:hover:border-pink-400/50 hover:shadow-2xl hover:shadow-pink-500/10 transition-all duration-300 flex flex-col items-start gap-6">
+                            <div className="p-3 rounded-xl bg-pink-100 dark:bg-pink-500/10 text-pink-600 dark:text-pink-400 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                                <Users size={24} />
+                            </div>
+                            <div className="space-y-4">
+                                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Real-time Collaboration</h3>
+                                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                    See every keystroke in real-time. Our zero-latency engine ensures that your collaborative sessions are buttery smooth.
+                                </p>
+                                <Link href="/faq" className="inline-flex items-center text-pink-600 dark:text-pink-400 font-medium hover:gap-2 transition-all pt-2">
+                                    View FAQ <ChevronRight size={18} />
+                                </Link>
+                            </div>
                         </div>
-                        <div className="space-y-4">
-                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Secure & Private</h3>
-                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                                Your privacy is our priority. Rooms are temporary and accessible only via unique URLs. We never index your code sessions in search engines, keeping your data between you and your team.
-                            </p>
-                            <Link href="/contact" className="inline-flex items-center text-indigo-600 dark:text-indigo-400 font-medium hover:gap-2 transition-all">
-                                Get in touch with us <ChevronRight size={18} />
-                            </Link>
+
+                        {/* Card 3 */}
+                        <div className="group p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 hover:border-indigo-500/50 dark:hover:border-indigo-400/50 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 flex flex-col items-start gap-6">
+                            <div className="p-3 rounded-xl bg-indigo-100 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                                <Shield size={24} />
+                            </div>
+                            <div className="space-y-4">
+                                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Secure & Private</h3>
+                                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                    Rooms are temporary and private. We never index your code sessions, keeping your sensitive data between you and your team.
+                                </p>
+                                <Link href="/contact" className="inline-flex items-center text-indigo-600 dark:text-indigo-400 font-medium hover:gap-2 transition-all pt-2">
+                                    Get in touch <ChevronRight size={18} />
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
