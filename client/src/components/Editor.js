@@ -503,7 +503,7 @@ export default function CodeEditor({ roomId }) {
                 </div>
 
                 {/* Row 2: Controls — horizontally scrollable on mobile */}
-                <div className="flex items-center gap-1.5 md:gap-2 px-3 pb-2 md:px-4 overflow-x-auto custom-scrollbar">
+                <div className="flex items-center gap-1.5 md:gap-2 px-3 pb-2 md:px-4 overflow-x-auto md:overflow-visible custom-scrollbar">
                     <LanguageSelector language={language} setLanguage={setLanguage} />
 
                     <button
