@@ -21,7 +21,7 @@ export default function Footer() {
                             The fastest way to collaborate, pair program, and debug with developers anywhere.
                         </p>
                         <div className="flex gap-4">
-                            <a href="https://www.linkedin.com/in/shubhamv2503/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="rounded-full p-2.5 bg-gray-200 dark:bg-[#111827] text-gray-700 dark:text-gray-300 hover:text-white hover:bg-[#0077b5] dark:hover:bg-[#1f2937] hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                            <a href="https://www.linkedin.com/company/yuki-stack-ai/?viewAsMember=true" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="rounded-full p-2.5 bg-gray-200 dark:bg-[#111827] text-gray-700 dark:text-gray-300 hover:text-white hover:bg-[#0077b5] dark:hover:bg-[#1f2937] hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                                 <Linkedin size={20} />
                             </a>
                             <Link href="/contact" aria-label="Contact via Email" className="rounded-full p-2.5 bg-gray-200 dark:bg-[#111827] text-gray-700 dark:text-gray-300 hover:text-white hover:bg-pink-600 dark:hover:bg-[#1f2937] hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
