@@ -47,16 +47,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en" suppressHydrationWarning>
             <body suppressHydrationWarning className="antialiased font-sans bg-white dark:bg-[#030712] text-gray-900 dark:text-purple-50 min-h-screen selection:bg-purple-500/30 flex flex-col transition-colors duration-300">
-                {/* Adsterra Popunder */}
-                <Script 
-                    src="https://pl29190706.profitablecpmratenetwork.com/80/3a/ba/803aba3decc0787682076a890c940835.js" 
-                    strategy="lazyOnload" 
-                />
-                {/* Adsterra Social Bar */}
-                <Script 
-                    src="https://pl29190707.profitablecpmratenetwork.com/25/59/aa/2559aab730f0fbd28b2c451b577fdf4b.js" 
-                    strategy="lazyOnload" 
-                />
+
                 <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
                     <Header />
                     <main className="flex-1 flex flex-col">
