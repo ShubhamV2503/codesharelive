@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { ThemeProvider } from "../components/ThemeProvider";
+import Script from "next/script";
 
 export const viewport = {
     width: 'device-width',
@@ -46,6 +47,13 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en" suppressHydrationWarning>
             <body suppressHydrationWarning className="antialiased font-sans bg-white dark:bg-[#030712] text-gray-900 dark:text-purple-50 min-h-screen selection:bg-purple-500/30 flex flex-col transition-colors duration-300">
+                {/* Google AdSense */}
+                <Script
+                    async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7698164935402815"
+                    crossOrigin="anonymous"
+                    strategy="afterInteractive"
+                />
 
                 <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
                     <Header />
