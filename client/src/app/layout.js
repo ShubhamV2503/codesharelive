@@ -39,6 +39,9 @@ export const metadata = {
     verification: {
         google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
     },
+    other: {
+        "google-adsense-account": "ca-pub-7698164935402815",
+    },
 };
 
 
