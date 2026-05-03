@@ -1,4 +1,7 @@
 import "./globals.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { ThemeProvider } from "../components/ThemeProvider";
 
 export const viewport = {
     width: 'device-width',
@@ -38,10 +41,6 @@ export const metadata = {
 };
 
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { ThemeProvider } from "../components/ThemeProvider";
-import Script from "next/script";
 
 export default function RootLayout({ children }) {
     return (

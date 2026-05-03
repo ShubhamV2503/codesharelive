@@ -13,6 +13,15 @@ export async function POST(req) {
             );
         }
 
+        // Validate credentials exist before attempting transport
+        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+            console.error('Nodemailer Error: Missing EMAIL_USER or EMAIL_PASS in .env.local');
+            return NextResponse.json(
+                { error: 'Server configuration error - missing email credentials.' },
+                { status: 500 }
+            );
+        }
+
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -23,8 +32,8 @@ export async function POST(req) {
 
         const mailOptions = {
             from: email,
-            to: process.env.EMAIL_USER, // Send to the same authenticated email
-            replyTo: email, // Allow replying directly to the sender
+            to: process.env.EMAIL_USER,
+            replyTo: email,
             subject: `codesharelive Contact: ${subject}`,
             text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
             html: `
@@ -37,15 +46,6 @@ export async function POST(req) {
                 <p>${message.replace(/\n/g, '<br>')}</p>
             `
         };
-
-        // If credentials aren't set, fail gracefully with a specific error so the user knows
-        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-            console.error('Nodemailer Error: Missing EMAIL_USER or EMAIL_PASS in .env.local');
-            return NextResponse.json(
-                { error: 'Server configuration error - missing email credentials.' },
-                { status: 500 }
-            );
-        }
 
         await transporter.sendMail(mailOptions);
 
