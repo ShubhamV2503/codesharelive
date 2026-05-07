@@ -28,13 +28,22 @@ export const metadata = {
         locale: "en_US",
         url: process.env.NEXT_PUBLIC_APP_URL || "https://codesharelive.com",
         title: "CodeshareLive - Real-time Collaborative Code Editor",
-        description: "Lightning-fast, zero-friction workspace built for modern pair programming with live cursors and native browser execution.",
-        siteName: "CodeshareLive"
+        description: "Lightning-fast, zero-friction workspace built for modern pair programming, featuring live cursors and native browser execution.",
+        siteName: "CodeshareLive",
+        images: [
+            {
+                url: "/og-image.png",
+                width: 1200,
+                height: 1200,
+                alt: "CodeshareLive - Real-time Collaborative Coding",
+            },
+        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "CodeshareLive - Live Pair Programming",
         description: "Code seamlessly with live cursors, sandboxed execution, and an interactive whiteboard.",
+        images: ["/og-image.png"],
     },
     verification: {
         google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
