@@ -34,7 +34,7 @@ export const metadata = {
             {
                 url: "/og-image.png",
                 width: 1200,
-                height: 1200,
+                height: 630,
                 alt: "CodeshareLive - Real-time Collaborative Coding",
             },
         ],
