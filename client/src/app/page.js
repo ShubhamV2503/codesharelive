@@ -75,7 +75,7 @@ export default function Home() {
                                     Built for speed and simplicity. Whether you are learning to code or a senior engineer pair-programming, we provide the tools you need.
                                 </p>
                                 <Link href="/about" className="inline-flex items-center text-purple-600 dark:text-purple-400 font-medium hover:gap-2 transition-all pt-2">
-                                    Learn more <ChevronRight size={18} />
+                                    Learn more about codesharelive <ChevronRight size={18} />
                                 </Link>
                             </div>
                         </div>
