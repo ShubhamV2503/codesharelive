@@ -42,6 +42,9 @@ export default function Header() {
                     <span className="font-bold text-lg text-black dark:text-white">codesharelive</span>
                 </Link>
                 <div className="flex items-center gap-6">
+                    <Link href="/blog" className="hidden sm:block text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+                        Blog
+                    </Link>
                     {mounted && (
                         <button
                             onClick={toggleTheme}

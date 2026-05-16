@@ -40,6 +40,7 @@ export default function Footer() {
                         <h3 className="font-semibold text-gray-900 dark:text-white mb-6">Resources</h3>
                         <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
                             <li><Link href="/about" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">About codesharelive</Link></li>
+                            <li><Link href="/blog" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">Developer Blog</Link></li>
                             <li><Link href="/contact" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">Contact Us</Link></li>
                         </ul>
                     </div>

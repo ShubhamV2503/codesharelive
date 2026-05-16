@@ -3,6 +3,7 @@ import { ChevronRight, Zap, Users, Shield } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import JoinForm from '../components/home/JoinForm';
 import AnimatedContainer, { AnimatedItem } from '../components/home/AnimatedContainer';
+import FeaturesDetail from '../components/home/FeaturesDetail';
 
 const HeroBackground = dynamic(() => import('../components/home/HeroBackground'));
 const MockEditor = dynamic(() => import('../components/home/MockEditor'));
@@ -58,14 +59,43 @@ export default function Home() {
                 <MockEditor />
             </AnimatedContainer>
 
+            {/* Features Detail Section - For SEO & Content Value */}
+            <FeaturesDetail />
+
+            {/* NEW SECTION: Use Cases & In-Depth Industry Content */}
+            <section className="w-full py-24 bg-white dark:bg-[#050a18] transition-colors duration-300">
+                <div className="max-w-7xl mx-auto px-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div className="p-10 rounded-3xl bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 space-y-6">
+                            <h3 className="text-3xl font-bold">Elevating Technical Interviews</h3>
+                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Traditional code sharing tools are often clunky and require installation. CodeshareLive provides a zero-friction environment that feels like a local IDE but works instantly in the browser. Interviewers can watch a candidate's thought process in real-time, providing a much more accurate assessment of their problem-solving skills.
+                            </p>
+                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                With the built-in compiler, you don't have to guess if the logic is sound. Run the code against test cases instantly and see the results. This creates a high-standard, professional interviewing experience that reflects well on your engineering culture.
+                            </p>
+                        </div>
+                        <div className="p-10 rounded-3xl bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 space-y-6">
+                            <h3 className="text-3xl font-bold">Global Mentoring & Education</h3>
+                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Mentoring junior developers or teaching a group of students is easier when you can all look at the same line of code at the same time. CodeshareLive allows mentors to highlight syntax, use the whiteboard to sketch out system architectures, and lead a shared coding session with up to 20 participants.
+                            </p>
+                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Our mission is to democratize high-quality technical education by providing the tools needed for real-time knowledge transfer. Whether you are halfway across the world or in the next room, the experience is identical: fast, reliable, and collaborative.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* NEW SECTION: SEO Internal Links & Features - CARD BASED */}
-            <section className="w-full py-24 bg-white dark:bg-[#050a18] border-t border-gray-100 dark:border-white/5 transition-colors duration-300 relative overflow-hidden">
+            <section className="w-full py-24 bg-gray-50 dark:bg-[#030712] border-t border-gray-100 dark:border-white/5 transition-colors duration-300 relative overflow-hidden">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent pointer-events-none" />
                 
                 <div className="max-w-7xl mx-auto px-4 relative z-10">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {/* Card 1 */}
-                        <div className="group p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 hover:border-purple-500/50 dark:hover:border-purple-400/50 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 flex flex-col items-start gap-6">
+                        <div className="group p-8 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 hover:border-purple-500/50 dark:hover:border-purple-400/50 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 flex flex-col items-start gap-6">
                             <div className="p-3 rounded-xl bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                                 <Zap size={24} />
                             </div>
@@ -81,7 +111,7 @@ export default function Home() {
                         </div>
 
                         {/* Card 2 */}
-                        <div className="group p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 hover:border-pink-500/50 dark:hover:border-pink-400/50 hover:shadow-2xl hover:shadow-pink-500/10 transition-all duration-300 flex flex-col items-start gap-6">
+                        <div className="group p-8 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 hover:border-pink-500/50 dark:hover:border-pink-400/50 hover:shadow-2xl hover:shadow-pink-500/10 transition-all duration-300 flex flex-col items-start gap-6">
                             <div className="p-3 rounded-xl bg-pink-100 dark:bg-pink-500/10 text-pink-600 dark:text-pink-400 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                                 <Users size={24} />
                             </div>
@@ -97,7 +127,7 @@ export default function Home() {
                         </div>
 
                         {/* Card 3 */}
-                        <div className="group p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 hover:border-indigo-500/50 dark:hover:border-indigo-400/50 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 flex flex-col items-start gap-6">
+                        <div className="group p-8 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 hover:border-indigo-500/50 dark:hover:border-indigo-400/50 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 flex flex-col items-start gap-6">
                             <div className="p-3 rounded-xl bg-indigo-100 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                                 <Shield size={24} />
                             </div>
