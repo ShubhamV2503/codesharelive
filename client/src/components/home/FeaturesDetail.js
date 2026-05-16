@@ -1,5 +1,5 @@
 import React from 'react';
-import { Terminal, Globe2, Share2, Code2, ShieldCheck, Zap } from 'lucide-react';
+import { Terminal, Globe2, Share2, Code2, ShieldCheck, Zap, Users } from 'lucide-react';
 
 const FeaturesDetail = () => {
     return (
