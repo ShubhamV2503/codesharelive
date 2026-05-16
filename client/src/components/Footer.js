@@ -39,15 +39,17 @@ export default function Footer() {
                     <div>
                         <h3 className="font-semibold text-gray-900 dark:text-white mb-6">Resources</h3>
                         <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                            <li><Link href="/templates" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">Starter Templates</Link></li>
                             <li><Link href="/about" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">About codesharelive</Link></li>
                             <li><Link href="/blog" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">Developer Blog</Link></li>
-                            <li><Link href="/contact" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">Contact Us</Link></li>
+                            <li><Link href="/changelog" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">Changelog</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h3 className="font-semibold text-gray-900 dark:text-white mb-6">Support</h3>
                         <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                            <li><Link href="/pricing" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">Pricing Plans</Link></li>
                             <li><Link href="/faq" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">FAQ / Help Center</Link></li>
                             <li><Link href="/terms" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">Terms of Service</Link></li>
                             <li><Link href="/privacy-policy" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">Privacy Policy</Link></li>
