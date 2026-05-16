@@ -99,8 +99,23 @@ function LanguageSelector({ language, setLanguage }) {
 }
 
 export default function CodeEditor({ roomId }) {
-    const [code, setCode] = useState('# Write your code here...');
-    const [language, setLanguage] = useState('python');
+    const [code, setCode] = useState(() => {
+        if (typeof window !== 'undefined') {
+            const seed = localStorage.getItem(`seed_code_${roomId}`);
+            return seed || '# Write your code here...';
+        }
+        return '# Write your code here...';
+    });
+
+    const [language, setLanguage] = useState(() => {
+        if (typeof window !== 'undefined') {
+            const seedLang = localStorage.getItem(`seed_lang_${roomId}`);
+            if (seedLang && LANGUAGES.find(l => l.id === seedLang.toLowerCase())) {
+                return seedLang.toLowerCase();
+            }
+        }
+        return 'python';
+    });
     const { resolvedTheme } = useTheme();
     const [readOnly, setReadOnly] = useState(false);
     const [users, setUsers] = useState([]);
@@ -350,20 +365,12 @@ export default function CodeEditor({ roomId }) {
             clearCanvas();
         });
 
-        // Seed template code if available
-        const seed = localStorage.getItem(`seed_code_${roomId}`);
-        if (seed) {
-            setCode(seed);
-            socketRef.current.emit('code-change', { roomId, code: seed });
-            localStorage.removeItem(`seed_code_${roomId}`);
-
-            const seedLang = localStorage.getItem(`seed_lang_${roomId}`);
-            if (seedLang) {
-                // Map common names to monaco IDs if necessary, or just use as is
-                const langId = seedLang.toLowerCase();
-                if (LANGUAGES.find(l => l.id === langId)) {
-                    setLanguage(langId);
-                }
+        // Emit initial seed code if it was found
+        if (typeof window !== 'undefined') {
+            const seed = localStorage.getItem(`seed_code_${roomId}`);
+            if (seed && socketRef.current) {
+                socketRef.current.emit('code-change', { roomId, code: seed });
+                localStorage.removeItem(`seed_code_${roomId}`);
                 localStorage.removeItem(`seed_lang_${roomId}`);
             }
         }
