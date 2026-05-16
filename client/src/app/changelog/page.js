@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Rocket, Bell, CheckCircle2, Info, AlertTriangle, Github, ArrowRight } from 'lucide-react';
+import { Rocket, Bell, CheckCircle2, Info, AlertTriangle, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -208,10 +208,7 @@ export default function ChangelogPage() {
                         You're all caught up!
                     </div>
                     <div className="mt-8 flex flex-col items-center gap-4">
-                        <Link href="https://github.com/YukiStackAI/codesharelive" className="text-[#f8fafc] hover:text-[#6ee7b7] flex items-center gap-2 transition-colors">
-                            <Github size={20} />
-                            View full commit history on GitHub
-                        </Link>
+
                         <Link href="/" className="group text-[#6ee7b7] font-bold flex items-center gap-2">
                             Go back to coding <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
