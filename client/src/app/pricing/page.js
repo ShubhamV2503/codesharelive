@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Check, X, ChevronDown, MessageSquare, Zap, Shield, Users, HelpCircle } from 'lucide-react';
+import { Check, X, ChevronDown, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 

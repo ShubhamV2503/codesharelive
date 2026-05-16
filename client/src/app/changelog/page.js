@@ -149,49 +149,56 @@ export default function ChangelogPage() {
             <main className="max-w-[800px] mx-auto px-6 relative">
                 {/* Vertical Line */}
                 <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#6ee7b7] via-[#1e293b] to-transparent hidden md:block" />
-
                 <div className="space-y-20">
-                    {CHANGELOG_ENTRIES.map((entry, idx) => (
-                        <motion.div 
-                            key={entry.version}
-                            initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className={`relative flex flex-col ${idx % 2 === 0 ? 'md:items-start' : 'md:items-end'}`}
-                        >
-                            {/* Dot on timeline */}
-                            <div className="absolute left-0 md:left-1/2 -translate-x-1/2 top-4 w-3 h-3 rounded-full bg-[#6ee7b7] shadow-[0_0_10px_rgba(110,231,183,1)] z-10 hidden md:block" />
+                    {CHANGELOG_ENTRIES.map((entry, idx) => {
+                        const isEven = idx % 2 === 0;
+                        const isNew = entry.types.includes('New');
+                        const isImproved = entry.types.includes('Improved');
+                        
+                        return (
+                            <motion.div 
+                                key={entry.version}
+                                initial={{ opacity: 0, x: isEven ? -20 : 20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                className={`relative flex flex-col ${isEven ? 'md:items-start' : 'md:items-end'}`}
+                            >
+                                {/* Dot on timeline */}
+                                <div className="absolute left-0 md:left-1/2 -translate-x-1/2 top-4 w-3 h-3 rounded-full bg-[#6ee7b7] shadow-[0_0_10px_rgba(110,231,183,1)] z-10 hidden md:block" />
 
-                            <div className={`w-full md:w-[45%] bg-[#0f172a] border border-[#1e293b] rounded-2xl p-8 hover:border-[#6ee7b7]/30 transition-all group ${
-                                entry.types.includes('New') ? 'border-l-4 border-l-green-500' : 
-                                entry.types.includes('Improved') ? 'border-l-4 border-l-blue-500' :
-                                'border-l-4 border-l-yellow-500'
-                            }`}>
-                                <div className="flex items-center justify-between mb-4">
-                                    <span className="text-[#6ee7b7] font-black text-xl">{entry.version}</span>
-                                    <span className="text-[#64748b] text-sm font-medium">{entry.date}</span>
-                                </div>
-                                <h3 className="text-xl font-bold mb-4 group-hover:text-[#6ee7b7] transition-colors">{entry.title}</h3>
-                                
-                                <div className="flex flex-wrap gap-2 mb-6">
-                                    {entry.types.map(t => <TypeBadge key={t} type={t} />)}
-                                </div>
+                                <div className={`w-full md:w-[45%] bg-[#0f172a] border border-[#1e293b] rounded-2xl p-8 hover:border-[#6ee7b7]/30 transition-all group ${
+                                    isNew ? 'border-l-4 border-l-green-500' : 
+                                    isImproved ? 'border-l-4 border-l-blue-500' :
+                                    'border-l-4 border-l-yellow-500'
+                                }`}>
+                                    <div className="flex items-center justify-between mb-4">
+                                        <span className="text-[#6ee7b7] font-black text-xl">{entry.version}</span>
+                                        <span className="text-[#64748b] text-sm font-medium">{entry.date}</span>
+                                    </div>
+                                    <h3 className="text-xl font-bold mb-4 group-hover:text-[#6ee7b7] transition-colors">{entry.title}</h3>
+                                    
+                                    <div className="flex flex-wrap gap-2 mb-6">
+                                        {entry.types.map(t => <TypeBadge key={t} type={t} />)}
+                                    </div>
 
-                                <ul className="space-y-4">
-                                    {entry.changes.map((change, cIdx) => (
-                                        <li key={cIdx} className="flex gap-3 text-sm leading-relaxed">
-                                            <div className={`mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full ${
-                                                change.type === 'New' ? 'bg-green-500' : 
-                                                change.type === 'Improved' ? 'bg-blue-500' : 
-                                                'bg-yellow-500'
-                                            }`} />
-                                            <span className="text-[#64748b]"><span className="text-[#f8fafc] font-semibold">{change.type}:</span> {change.text}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    ))}
+                                    <ul className="space-y-4">
+                                        {entry.changes.map((change, cIdx) => (
+                                            <li key={cIdx} className="flex gap-3 text-sm leading-relaxed">
+                                                <div className={`mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full ${
+                                                    change.type === 'New' ? 'bg-green-500' : 
+                                                    change.type === 'Improved' ? 'bg-blue-500' : 
+                                                    'bg-yellow-500'
+                                                }`} />
+                                                <span className="text-[#64748b]">
+                                                    <span className="text-[#f8fafc] font-semibold">{change.type}:</span> {change.text}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
                 </div>
 
                 {/* Final Message */}

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
-import { Search, ChevronRight, Star, Code, Terminal, Filter } from 'lucide-react';
+import { Search, ChevronRight, Star, Filter } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 

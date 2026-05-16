@@ -25,12 +25,56 @@ const BLOG_POSTS = [
             <p>In the next post, we'll dive into how we handle the Operational Transformation (OT) for actual text editing—the real heart of a collaborative engine.</p>
         `
     },
-    // Adding more shells for other slugs to satisfy generateStaticParams
-    { slug: "sandboxed-code-execution" },
-    { slug: "introducing-codesharelive-2-0" },
-    { slug: "5-tips-for-better-pair-programming" },
-    { slug: "how-to-use-for-technical-interviews" },
-    { slug: "march-2026-update" }
+    {
+        slug: "sandboxed-code-execution",
+        category: "Engineering",
+        title: "Sandboxed Code Execution: How We Run Your Code Safely",
+        author: "Sarah Chen",
+        role: "Security Engineer",
+        date: "April 28, 2026",
+        readTime: "6 min read",
+        content: "<p>Deep dive into our sandboxing architecture using gVisor and custom OCI runtimes to ensure safe code execution.</p>"
+    },
+    {
+        slug: "introducing-codesharelive-2-0",
+        category: "Product",
+        title: "Introducing CodeshareLive 2.0: Whiteboards & Multi-Language Support",
+        author: "Jason Smyth",
+        role: "Product Manager",
+        date: "March 15, 2026",
+        readTime: "4 min read",
+        content: "<p>Explore the new features of 2.0 including the interactive whiteboard and expanded language support.</p>"
+    },
+    {
+        slug: "5-tips-for-better-pair-programming",
+        category: "Tutorial",
+        title: "5 Tips for Better Pair Programming Sessions",
+        author: "Maria Garcia",
+        role: "Lead Developer",
+        date: "Feb 22, 2026",
+        readTime: "5 min read",
+        content: "<p>Learn how to collaborate effectively and get the most out of your shared coding time.</p>"
+    },
+    {
+        slug: "how-to-use-for-technical-interviews",
+        category: "Tutorial",
+        title: "How to Use CodeshareLive for Technical Interviews",
+        author: "David Park",
+        role: "HR Lead",
+        date: "Jan 12, 2026",
+        readTime: "4 min read",
+        content: "<p>A comprehensive guide for technical recruiters and engineering managers on running smooth interviews.</p>"
+    },
+    {
+        slug: "march-2026-update",
+        category: "Updates",
+        title: "March 2026 Update: Performance Improvements & Bug Fixes",
+        author: "Team Codeshare",
+        role: "Core Team",
+        date: "March 2, 2026",
+        readTime: "3 min read",
+        content: "<p>Read about our latest performance optimizations and stability improvements.</p>"
+    }
 ];
 
 export async function generateStaticParams() {
@@ -94,12 +138,11 @@ export default function BlogPost({ params }) {
                 </header>
 
                 <div 
-                    className="prose prose-invert prose-emerald max-w-none 
-                    prose-headings:text-[#f8fafc] prose-headings:font-bold 
-                    prose-p:text-[#64748b] prose-p:leading-relaxed prose-p:text-lg
-                    prose-strong:text-[#f8fafc]
-                    prose-code:text-[#6ee7b7] prose-code:bg-[#0f172a] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-                    prose-pre:bg-[#020817] prose-pre:border prose-pre:border-[#1e293b] prose-pre:rounded-xl prose-pre:p-6
+                    className="max-w-none text-lg leading-relaxed text-[#64748b] 
+                    [&>p]:mb-6 [&>h3]:text-2xl [&>h3]:font-bold [&>h3]:text-[#f8fafc] [&>h3]:mt-12 [&>h3]:mb-6
+                    [&>pre]:bg-[#020817] [&>pre]:border [&>pre]:border-[#1e293b] [&>pre]:rounded-xl [&>pre]:p-6 [&>pre]:mb-8 [&>pre]:overflow-x-auto
+                    [&>pre_code]:text-[#6ee7b7] [&>pre_code]:bg-transparent [&>pre_code]:p-0
+                    [&>code]:text-[#6ee7b7] [&>code]:bg-[#0f172a] [&>code]:px-1.5 [&>code]:py-0.5 [&>code]:rounded
                     "
                     dangerouslySetInnerHTML={{ __html: post.content || "<p>Article content coming soon...</p>" }}
                 />
