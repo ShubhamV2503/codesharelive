@@ -45,9 +45,7 @@ export default function Header() {
                     <Link href="/templates" className="hidden md:block text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
                         Templates
                     </Link>
-                    <Link href="/pricing" className="hidden md:block text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                        Pricing
-                    </Link>
+
                     <Link href="/blog" className="hidden sm:block text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
                         Blog
                     </Link>
