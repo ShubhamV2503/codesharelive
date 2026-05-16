@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
-import Editor from '@monaco-editor/react';
+import MonacoEditor from '@monaco-editor/react';
 import { io } from 'socket.io-client';
 import Link from 'next/link';
 import { Copy, Download, Users, Check, ChevronDown, Pencil, Trash2, PlayCircle, Terminal, X } from 'lucide-react';
@@ -101,17 +101,25 @@ function LanguageSelector({ language, setLanguage }) {
 export default function CodeEditor({ roomId }) {
     const [code, setCode] = useState(() => {
         if (typeof window !== 'undefined') {
-            const seed = localStorage.getItem(`seed_code_${roomId}`);
-            return seed || '# Write your code here...';
+            try {
+                const seed = localStorage.getItem(`seed_code_${roomId}`);
+                return seed || '# Write your code here...';
+            } catch (e) {
+                console.error("Storage error:", e);
+            }
         }
         return '# Write your code here...';
     });
 
     const [language, setLanguage] = useState(() => {
         if (typeof window !== 'undefined') {
-            const seedLang = localStorage.getItem(`seed_lang_${roomId}`);
-            if (seedLang && LANGUAGES.find(l => l.id === seedLang.toLowerCase())) {
-                return seedLang.toLowerCase();
+            try {
+                const seedLang = localStorage.getItem(`seed_lang_${roomId}`);
+                if (seedLang && LANGUAGES.find(l => l.id === seedLang.toLowerCase())) {
+                    return seedLang.toLowerCase();
+                }
+            } catch (e) {
+                console.error("Storage error:", e);
             }
         }
         return 'python';
@@ -604,7 +612,7 @@ export default function CodeEditor({ roomId }) {
 
             <div className="flex-1 w-full relative flex flex-col">
                 <div className="flex-1 relative">
-                    <Editor
+                    <MonacoEditor
                         height="100%"
                         language={language}
                         theme={resolvedTheme === 'light' ? 'light' : 'vs-dark'}
