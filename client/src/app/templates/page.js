@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { Search, ChevronRight, Star, Filter } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const TEMPLATES = [
@@ -147,6 +148,7 @@ const LANGUAGES = ["All", "JavaScript", "TypeScript", "Python", "Go", "Rust", "R
 export default function TemplatesPage() {
     const [searchQuery, setSearchQuery] = useState('');
     const [activeTab, setActiveTab] = useState('All');
+    const router = useRouter();
 
     const filteredTemplates = useMemo(() => {
         return TEMPLATES.filter(template => {
@@ -161,6 +163,13 @@ export default function TemplatesPage() {
             return matchesSearch && matchesTab;
         });
     }, [searchQuery, activeTab]);
+
+    const openInEditor = (template) => {
+        const roomId = Math.random().toString(36).substring(2, 10);
+        localStorage.setItem(`seed_code_${roomId}`, template.code);
+        localStorage.setItem(`seed_lang_${roomId}`, template.language.toLowerCase());
+        router.push(`/${roomId}`);
+    };
 
     return (
         <div className="min-h-screen bg-[#030712] text-[#f8fafc] pb-20 selection:bg-[#6ee7b7]/30">
@@ -290,12 +299,12 @@ export default function TemplatesPage() {
                                             <Star size={14} className="text-yellow-500 fill-yellow-500" />
                                             {template.uses} uses
                                         </span>
-                                        <Link 
-                                            href="/" 
+                                        <button 
+                                            onClick={() => openInEditor(template)}
                                             className="inline-flex items-center gap-1.5 text-xs font-bold text-[#6ee7b7] hover:gap-2.5 transition-all"
                                         >
                                             Open in Editor <ChevronRight size={14} />
-                                        </Link>
+                                        </button>
                                     </div>
                                 </motion.div>
                             ))}

@@ -350,6 +350,24 @@ export default function CodeEditor({ roomId }) {
             clearCanvas();
         });
 
+        // Seed template code if available
+        const seed = localStorage.getItem(`seed_code_${roomId}`);
+        if (seed) {
+            setCode(seed);
+            socketRef.current.emit('code-change', { roomId, code: seed });
+            localStorage.removeItem(`seed_code_${roomId}`);
+
+            const seedLang = localStorage.getItem(`seed_lang_${roomId}`);
+            if (seedLang) {
+                // Map common names to monaco IDs if necessary, or just use as is
+                const langId = seedLang.toLowerCase();
+                if (LANGUAGES.find(l => l.id === langId)) {
+                    setLanguage(langId);
+                }
+                localStorage.removeItem(`seed_lang_${roomId}`);
+            }
+        }
+
         return () => {
             socketRef.current.disconnect();
         };
