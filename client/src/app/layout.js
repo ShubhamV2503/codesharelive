@@ -67,6 +67,20 @@ export default function RootLayout({ children }) {
                     strategy="afterInteractive"
                 />
 
+                {/* JSON-LD WebSite Structured Data for Google Site Name */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "WebSite",
+                            "name": "CodeshareLive",
+                            "alternateName": ["Codeshare Live"],
+                            "url": "https://codesharelive.vercel.app/"
+                        })
+                    }}
+                />
+
                 <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
                     <Header />
                     <main className="flex-1 flex flex-col">
