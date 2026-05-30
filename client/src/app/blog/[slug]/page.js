@@ -7,7 +7,7 @@ const BLOG_POSTS = [
         slug: "how-we-built-real-time-cursors",
         category: "Engineering",
         title: "How We Built Real-Time Cursors with WebSockets",
-        author: "Alex Rivera",
+        author: "Smith Shah",
         role: "Principal Engineer",
         date: "May 10, 2026",
         readTime: "8 min read",
@@ -29,41 +29,41 @@ const BLOG_POSTS = [
         slug: "sandboxed-code-execution",
         category: "Engineering",
         title: "Sandboxed Code Execution: How We Run Your Code Safely",
-        author: "Sarah Chen",
+        author: "Priya Patel",
         role: "Security Engineer",
         date: "April 28, 2026",
         readTime: "6 min read",
-        content: "<p>Deep dive into our sandboxing architecture using gVisor and custom OCI runtimes to ensure safe code execution.</p>"
+        content: "<p>Executing arbitrary user code safely in the browser required a paradigm shift. Discover our multi-layered isolation strategy utilizing custom isolated environments to prevent malicious execution while maintaining high performance. We utilize strict network policies and memory limits to ensure that each execution context is ephemeral and completely sandboxed from our core infrastructure.</p>"
     },
     {
         slug: "introducing-codesharelive-2-0",
         category: "Product",
-        title: "Introducing CodeshareLive 2.0: Whiteboards & Multi-Language Support",
-        author: "Jason Smyth",
+        title: "Introducing CodeshareLive 2.0: Whiteboards & Multi-Language",
+        author: "Jeet Nakarani",
         role: "Product Manager",
         date: "March 15, 2026",
         readTime: "4 min read",
-        content: "<p>Explore the new features of 2.0 including the interactive whiteboard and expanded language support.</p>"
+        content: "<p>The wait is over! CodeshareLive 2.0 brings an interactive infinite canvas whiteboard and expands our native code execution engine to support over 15 modern programming languages including Rust, Go, and Python. We've redesigned the UI to be more intuitive for both seasoned engineers and beginners participating in coding bootcamps.</p>"
     },
     {
         slug: "5-tips-for-better-pair-programming",
         category: "Tutorial",
         title: "5 Tips for Better Pair Programming Sessions",
-        author: "Maria Garcia",
+        author: "Ananya Sharma",
         role: "Lead Developer",
         date: "Feb 22, 2026",
         readTime: "5 min read",
-        content: "<p>Learn how to collaborate effectively and get the most out of your shared coding time.</p>"
+        content: "<p>Pair programming is more than just sharing a screen. Learn effective communication strategies, how to divide driver/navigator roles, and how to use CodeshareLive to supercharge your collaborative workflow. It's about establishing context, active listening, and frequently switching roles to prevent fatigue.</p>"
     },
     {
         slug: "how-to-use-for-technical-interviews",
         category: "Tutorial",
         title: "How to Use CodeshareLive for Technical Interviews",
-        author: "David Park",
+        author: "Riya Desai",
         role: "HR Lead",
         date: "Jan 12, 2026",
         readTime: "4 min read",
-        content: "<p>A comprehensive guide for technical recruiters and engineering managers on running smooth interviews.</p>"
+        content: "<p>A comprehensive guide for hiring managers and recruiters. Learn how to set up pre-configured interview rooms, provide boilerplate challenges, and effectively evaluate candidate problem-solving in real-time. We cover best practices for making candidates feel comfortable while accurately assessing their coding proficiency.</p>"
     },
     {
         slug: "march-2026-update",
@@ -73,7 +73,7 @@ const BLOG_POSTS = [
         role: "Core Team",
         date: "March 2, 2026",
         readTime: "3 min read",
-        content: "<p>Read about our latest performance optimizations and stability improvements.</p>"
+        content: "<p>We've heavily optimized our core WebSocket mesh architecture and resolved critical edge cases causing cursor desynchronization on slow connections. Read the full changelog for a breakdown of all backend improvements, including a 40% reduction in initial load times and improved syntax highlighting for C++.</p>"
     }
 ];
 
