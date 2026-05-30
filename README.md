@@ -248,18 +248,28 @@ NEXT_PUBLIC_GOOGLE_VERIFICATION=your_verification_code
 
 <br/>
 
-## 📄 License
+## 📄 License & Contributing
 
 **This repository and its codebase are proprietary.** All rights reserved.
 
-This project is strictly for personal use by the creator. It may not be copied, distributed, modified, or used by any other person or organization without explicit written permission from the author.
+However, **contributions are welcome!** If you'd like to improve CodeshareLive, here's how:
+
+1. **Fork** the repository
+2. **Create a new branch** for your feature or fix (`git checkout -b feature/amazing-feature`)
+3. **Make your changes** and commit them (`git commit -m "Add amazing feature"`)
+4. **Push** to your fork (`git push origin feature/amazing-feature`)
+5. **Open a Pull Request** — describe what you changed and why
+
+Once your PR is reviewed and merged, you'll be added as a **contributor** 🎉
+
+> **Note:** By submitting a PR, you agree that your contributions will be licensed under the same terms as this project.
 
 <br/>
 
 ---
 
 <p align="center">
-  <strong>Built with ❤️ by <a href="https://github.com/ShubhamV2503">Shubham</a></strong>
-  <br/>
-  <sub>If you found this useful, give it a ⭐ on GitHub!</sub>
+  <a href="https://github.com/ShubhamV2503/codesharelive">
+    <img src="https://img.shields.io/badge/⭐_Star_this_repo-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="Star on GitHub" />
+  </a>
 </p>

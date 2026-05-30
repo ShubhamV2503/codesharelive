@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Linkedin, Mail, Globe } from 'lucide-react';
+import { Linkedin, Mail, Globe, Github } from 'lucide-react';
 
 
 export default function Footer() {
@@ -25,6 +25,10 @@ export default function Footer() {
                             <a href="https://yukistackai.vercel.app/" aria-label="Company Website" title="Company Website" target="_blank" rel="noopener noreferrer" className="rounded-full p-2.5 bg-gray-200 dark:bg-[#111827] text-gray-700 dark:text-gray-300 hover:text-white hover:bg-blue-600 dark:hover:bg-[#1f2937] hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                                 <Globe size={20} />
                                 <span className="sr-only">Company Website</span>
+                            </a>
+                            <a href="https://github.com/ShubhamV2503/codesharelive" aria-label="GitHub Repository" title="GitHub" target="_blank" rel="noopener noreferrer" className="rounded-full p-2.5 bg-gray-200 dark:bg-[#111827] text-gray-700 dark:text-gray-300 hover:text-white hover:bg-[#333] dark:hover:bg-[#1f2937] hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                                <Github size={20} />
+                                <span className="sr-only">GitHub</span>
                             </a>
                             <Link href="/contact" aria-label="Contact via Email" title="Contact Us" className="rounded-full p-2.5 bg-gray-200 dark:bg-[#111827] text-gray-700 dark:text-gray-300 hover:text-white hover:bg-pink-600 dark:hover:bg-[#1f2937] hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                                 <Mail size={20} />
