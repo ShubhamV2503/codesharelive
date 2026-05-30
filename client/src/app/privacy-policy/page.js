@@ -1,6 +1,12 @@
-"use client";
-
 import Link from 'next/link';
+
+export const metadata = {
+    title: 'Privacy Policy',
+    description: 'Read the Privacy Policy for codesharelive. Learn how we collect, use, and protect your data while you use our real-time collaborative code editor.',
+    alternates: {
+        canonical: '/privacy-policy',
+    },
+};
 
 export default function PrivacyPolicy() {
     return (

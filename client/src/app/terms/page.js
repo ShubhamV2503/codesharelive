@@ -1,6 +1,12 @@
-"use client";
-
 import Link from 'next/link';
+
+export const metadata = {
+    title: 'Terms of Service',
+    description: 'Read the Terms of Service for codesharelive. Understand the rules, guidelines, and policies for using our real-time collaborative code editor.',
+    alternates: {
+        canonical: '/terms',
+    },
+};
 
 export default function TermsOfService() {
     return (
