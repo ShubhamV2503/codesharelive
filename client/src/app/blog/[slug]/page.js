@@ -9,6 +9,7 @@ const BLOG_POSTS = [
         title: "How We Built Real-Time Cursors with WebSockets",
         author: "Smith Shah",
         role: "Principal Engineer",
+        bio: "Principal Engineer at CodeshareLive. Smith specializes in distributed systems and WebSockets, leading the architecture behind our zero-latency real-time collaboration engine.",
         date: "May 10, 2026",
         readTime: "8 min read",
         content: `
@@ -31,6 +32,7 @@ const BLOG_POSTS = [
         title: "Sandboxed Code Execution: How We Run Your Code Safely",
         author: "Priya Patel",
         role: "Security Engineer",
+        bio: "Security Engineer at CodeshareLive. Priya focuses on container isolation, runtime security, and ensuring our execution sandboxes remain impenetrable.",
         date: "April 28, 2026",
         readTime: "6 min read",
         content: "<p>Executing arbitrary user code safely in the browser required a paradigm shift. Discover our multi-layered isolation strategy utilizing custom isolated environments to prevent malicious execution while maintaining high performance. We utilize strict network policies and memory limits to ensure that each execution context is ephemeral and completely sandboxed from our core infrastructure.</p>"
@@ -41,6 +43,7 @@ const BLOG_POSTS = [
         title: "Introducing CodeshareLive 2.0: Whiteboards & Multi-Language",
         author: "Jeet Nakarani",
         role: "Product Manager",
+        bio: "Product Manager at CodeshareLive. Jeet is obsessed with user experience and seamless integration, driving the vision for our new interactive features.",
         date: "March 15, 2026",
         readTime: "4 min read",
         content: "<p>The wait is over! CodeshareLive 2.0 brings an interactive infinite canvas whiteboard and expands our native code execution engine to support over 15 modern programming languages including Rust, Go, and Python. We've redesigned the UI to be more intuitive for both seasoned engineers and beginners participating in coding bootcamps.</p>"
@@ -51,6 +54,7 @@ const BLOG_POSTS = [
         title: "5 Tips for Better Pair Programming Sessions",
         author: "Ananya Sharma",
         role: "Lead Developer",
+        bio: "Lead Developer at CodeshareLive. Ananya is an advocate for collaborative programming methodologies and writes extensively on team productivity.",
         date: "Feb 22, 2026",
         readTime: "5 min read",
         content: "<p>Pair programming is more than just sharing a screen. Learn effective communication strategies, how to divide driver/navigator roles, and how to use CodeshareLive to supercharge your collaborative workflow. It's about establishing context, active listening, and frequently switching roles to prevent fatigue.</p>"
@@ -61,6 +65,7 @@ const BLOG_POSTS = [
         title: "How to Use CodeshareLive for Technical Interviews",
         author: "Riya Desai",
         role: "HR Lead",
+        bio: "HR Lead at CodeshareLive. Riya is passionate about improving technical hiring processes and creating inclusive environments for engineering candidates.",
         date: "Jan 12, 2026",
         readTime: "4 min read",
         content: "<p>A comprehensive guide for hiring managers and recruiters. Learn how to set up pre-configured interview rooms, provide boilerplate challenges, and effectively evaluate candidate problem-solving in real-time. We cover best practices for making candidates feel comfortable while accurately assessing their coding proficiency.</p>"
@@ -71,6 +76,7 @@ const BLOG_POSTS = [
         title: "March 2026 Update: Performance Improvements & Bug Fixes",
         author: "Team Codeshare",
         role: "Core Team",
+        bio: "The core engineering and product team at CodeshareLive. We are dedicated to building the ultimate workspace for modern pair programming.",
         date: "March 2, 2026",
         readTime: "3 min read",
         content: "<p>We've heavily optimized our core WebSocket mesh architecture and resolved critical edge cases causing cursor desynchronization on slow connections. Read the full changelog for a breakdown of all backend improvements, including a 40% reduction in initial load times and improved syntax highlighting for C++.</p>"
@@ -129,11 +135,6 @@ export default function BlogPost({ params }) {
                             <span>{post.readTime || "5 min read"}</span>
                         </div>
                         
-                        <div className="ml-auto flex items-center gap-4">
-                            <button className="hover:text-[#6ee7b7] transition-colors"><Twitter size={18} /></button>
-                            <button className="hover:text-[#6ee7b7] transition-colors"><Linkedin size={18} /></button>
-                            <button className="hover:text-[#6ee7b7] transition-colors"><Link2 size={18} /></button>
-                        </div>
                     </div>
                 </header>
 
@@ -154,12 +155,8 @@ export default function BlogPost({ params }) {
                         <div className="text-center md:text-left">
                             <h4 className="text-xl font-bold mb-2">{post.author || "Team Codeshare"}</h4>
                             <p className="text-[#64748b] text-sm leading-relaxed mb-4">
-                                {post.role || "Developer"} at CodeshareLive. Passionate about real-time systems, distributed databases, and building tools that help developers move faster.
+                                {post.bio || `${post.role || "Developer"} at CodeshareLive.`}
                             </p>
-                            <div className="flex items-center justify-center md:justify-start gap-4">
-                                <Link href="#" className="text-[#6ee7b7] text-sm font-bold hover:underline underline-offset-4">Follow on Twitter</Link>
-                                <Link href="#" className="text-[#6ee7b7] text-sm font-bold hover:underline underline-offset-4">Read more posts</Link>
-                            </div>
                         </div>
                     </div>
                 </footer>
